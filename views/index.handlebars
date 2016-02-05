@@ -1,4 +1,5 @@
 <h1>Social todo app for cpsc113</h1>
+<h1><a href="/user/logout">Logout</a></h1>
 
 {{#if errors}}
 <div style="color:red" class="validation-error">
@@ -15,13 +16,20 @@
             <ul>
             {{#each tasks}}
                 <li class="tasks-list-item">
-                  <span class="task-title">{{this.title}}</span>
-                  <form method="post">
-                    <input type="button" name="delete-task" class="delete-task" value="Delete">
+                    {{#if this.isComplete}}<span>complete task!</span>
+                  {{else}} <span class="task-title">{{this.title}}</span> {{/if}}
+
+                  
+                                    
+                    <form method = "post" action="/task/delete/{{this._id}}">
+                    <input type="submit" name="delete-task" class="delete-task" value="Delete">
                   </form>
-                  <form method="post">
-                    <input type="button" name="toggle-task" class="toggle-task" value="Mark complete">
+
+                   <form method="post" action="/task/complete/{{this._id}}">
+                    <input type="submit" name="toggle-task" class="toggle-task" value="Mark complete">
+                    
                   </form>
+                  
                 </li>
             {{/each}}
             </ul>
@@ -67,4 +75,4 @@
       <input class="sign-up-submit" type="submit">
     </form>
 </div>
-{{/if}}
+{{/if}} 
