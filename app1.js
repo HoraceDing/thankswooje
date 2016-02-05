@@ -1,12 +1,11 @@
 var express = require('express');
-<<<<<<< HEAD
 var exphbs  = require('express-handlebars');
 var app = express();
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/social_todo_db');
+mongoose.connect(process.env.MONGO_URL);
 var Users = require('./models/users.js');
 var Tasks = require('./models/tasks.js');
 
@@ -17,15 +16,13 @@ var store = new MongoDBStore({
   uri: process.env.MONGO_URL,
   collection: 'sessions'
 });
-app.use(express.static("CSS"));
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 // Configure session middleware that will parse the cookies
 // of an incoming request to see if there is a session for this cookie.
 app.use(session({
-  secret: "poop",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: 'auto' },
@@ -50,37 +47,24 @@ app.use(function(req, res, next){
 // Middleware that checks if a user is logged in. If so, the
 // request continues to be processed, otherwise a 403 is returned.
 function isLoggedIn(req, res, next){
-  console.log("poop");
   if(res.locals.currentUser){
     next();
   }else{
-    console.log("bad");
     res.sendStatus(403);
   }
 }
-
-
 
 // Middleware that loads a users tasks if they are logged in.
 function loadUserTasks(req, res, next) {
   if(!res.locals.currentUser){
     return next();
   }
-  
   Tasks.find({}).or([
       {owner: res.locals.currentUser},
       {collaborators: res.locals.currentUser.email}])
     .exec(function(err, tasks){
       if(!err){
-          for (var i = 0; i < tasks.length; i++) {
-              if (tasks[i].owner.toString() == res.locals.currentUser._id.toString())
-              {
-                  tasks[i].isOwner = true;
-              } else {
-                  tasks[i].isOwner = false;
-              }
-          }
-          res.locals.tasks = tasks;
+        res.locals.tasks = tasks;
       }
       next();
   });
@@ -92,17 +76,14 @@ app.get('/', loadUserTasks, function (req, res) {
 });
 
 // Handle submitted form for new users
-app.post('/user/register', function (req, res) {
+app.post('/user/register', function (req, res, err) {
   if(req.body.password !== req.body.password_confirmation){
       return res.render('index', {errors: "Password and password confirmation do not match"});
   }
   if (req.body.password.length < 1) {
-    err = 'Password too short';
+    err = 'Bad password';
     res.render('index', {errors: err});
     return;
-  }
-  if ( req.body.name.length < 1) {
-    return res.render('index', {errors: 'name too short'});
   }
 
   // Save the new user
@@ -176,49 +157,7 @@ app.post('/task/create', function(req, res){
   });
 });
 
-app.post('/task/complete/:id', function(req,res) {
-   // console.log("jojo");
-    Tasks.findById(req.params.id, function(err,task){
-        if (err) {
-            res.send("Error finding task");
-        }else{
-            var change = false;
-            if(!task.isComplete) {
-                change = true;
-            }
-            Tasks.update({_id: req.params.id}, {isComplete: change}, function(err){
-            if(err) {
-                res.send('error updating task');
-            }else{
-                res.redirect('/');
-            }
-            
-            });
-        } 
-    });
-});
-
 // Start the server
-app.post('/task/delete/:id', function(req,res) {
-   // console.log("deleted");
-    Tasks.remove({_id: req.params.id}, function(err) {
-        if (err) {
-            res.send('Error deleting task');
-        }else {
-            res.redirect('/');
-        }
-    });
-});
-
-app.listen(process.env.PORT || 8080, function () {
-=======
-var app = express();
-
-app.get('/', function (req, res) {
-  res.send('Hello World!asdsds');
-});
-
 app.listen(process.env.PORT, function () {
->>>>>>> master
   console.log('Example app listening on port ' + process.env.PORT);
-});
+}); 

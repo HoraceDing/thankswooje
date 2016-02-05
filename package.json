@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/kljensen/cpsc113-social-todo-node#readme",
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.2",
     "connect-mongodb-session": "^1.1.0",
@@ -27,5 +28,12 @@
   },
   "devDependencies": {
     "nodemon": "^1.8.1"
+=======
+    "async": "~0.2.8",
+    "connect-mongodb-session": "^1.1.1",
+    "express": "^3.2.6",
+    "express-session": "^1.13.0",
+    "socket.io": "~0.9.14"
+>>>>>>> master
   }
 }
