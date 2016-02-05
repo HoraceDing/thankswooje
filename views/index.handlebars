@@ -23,14 +23,13 @@
                     {{#if this.isComplete}}<span>complete task!</span>
                   {{else}} <span class="task-title">{{this.title}}</span> {{/if}}
 
-                  
                                     
                     <form method = "post" action="/task/delete/{{this._id}}">
-                    <submitt type="submit" name="delete-task" class="delete-task" value="Delete">
+                    <input type="submit" name="delete-task" class="delete-task" value="Delete">
                   </form>
 
                    <form method="post" action="/task/complete/{{this._id}}">
-                    <submit type="submit" name="toggle-task" class="toggle-task" value="Mark complete">
+                    <input type="submit" name="toggle-task" class="toggle-task" value="Mark complete">
                     
                   </form>
                   
@@ -79,4 +78,4 @@
       <input class="sign-up-submit" type="submit">
     </form>
 </div>
-{{/if}} 
+{{/if}}

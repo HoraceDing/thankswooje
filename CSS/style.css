@@ -22,7 +22,7 @@ h1 {
   text-align: center;
 }
 
-input[type="username"],
+input[type="text"],
 input[type="password"],
 input[type="date"],
 input[type="datetime"],

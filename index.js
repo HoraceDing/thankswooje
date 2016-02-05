@@ -49,9 +49,11 @@ app.use(function(req, res, next){
 // Middleware that checks if a user is logged in. If so, the
 // request continues to be processed, otherwise a 403 is returned.
 function isLoggedIn(req, res, next){
+  console.log("poop");
   if(res.locals.currentUser){
     next();
   }else{
+    console.log("bad");
     res.sendStatus(403);
   }
 }
@@ -171,7 +173,7 @@ app.post('/task/create', function(req, res){
 });
 
 app.post('/task/complete/:id', function(req,res) {
-    console.log("jojo");
+   // console.log("jojo");
     Tasks.findById(req.params.id, function(err,task){
         if (err) {
             res.send("Error finding task");
@@ -194,7 +196,7 @@ app.post('/task/complete/:id', function(req,res) {
 
 // Start the server
 app.post('/task/delete/:id', function(req,res) {
-    console.log("deleted");
+   // console.log("deleted");
     Tasks.remove({_id: req.params.id}, function(err) {
         if (err) {
             res.send('Error deleting task');
@@ -204,6 +206,6 @@ app.post('/task/delete/:id', function(req,res) {
     });
 });
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT || 8080, function () {
   console.log('Example app listening on port ' + process.env.PORT);
 });
