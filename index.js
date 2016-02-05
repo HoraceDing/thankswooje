@@ -96,9 +96,12 @@ app.post('/user/register', function (req, res) {
       return res.render('index', {errors: "Password and password confirmation do not match"});
   }
   if (req.body.password.length < 1) {
-    err = 'Bad password';
+    err = 'Password too short';
     res.render('index', {errors: err});
     return;
+  }
+  if ( req.body.name.length < 1) {
+    return res.render('index', {errors: 'name too short'});
   }
 
   // Save the new user
