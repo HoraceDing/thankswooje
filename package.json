@@ -1,11 +1,33 @@
 {
-  "name": "chat-example",
-  "version": "0.0.0",
-  "description": "A chat example to showcase how to use `socket.io` with a static `express` server with `async` for control flow.",
-  "main": "server.js",
-  "repository": "",
-  "author": "Mostafa Eweda <mo.eweda@gmail.com>",
+  "name": "cpsc113-social-todo-node",
+  "version": "1.0.0",
+  "description": "my assignment for class",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kljensen/cpsc113-social-todo-node.git"
+  },
+  "author": "",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/kljensen/cpsc113-social-todo-node/issues"
+  },
+  "homepage": "https://github.com/kljensen/cpsc113-social-todo-node#readme",
   "dependencies": {
+    "bcrypt": "^0.8.5",
+    "body-parser": "^1.14.2",
+    "connect-mongodb-session": "^1.1.0",
+    "express": "^4.13.4",
+    "express-handlebars": "^2.0.1",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.3.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.8.1"
+
     "async": "~0.2.8",
     "connect-mongodb-session": "^1.1.1",
     "express": "^3.2.6",
