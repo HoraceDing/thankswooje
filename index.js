@@ -213,7 +213,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!asdsds');
 });
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT || 8080, function () {
   
   console.log('Example app listening on port ' + process.env.PORT);
   
