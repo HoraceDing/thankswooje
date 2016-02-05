@@ -16,7 +16,7 @@ var store = new MongoDBStore({
   uri: process.env.MONGO_URL,
   collection: 'sessions'
 });
-//app.use(express.static("CSS"));
+app.use(express.static("CSS"));
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
