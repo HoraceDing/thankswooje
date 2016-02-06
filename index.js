@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 // Configure session middleware that will parse the cookies
 // of an incoming request to see if there is a session for this cookie.
 app.use(session({
-  secret: "poop",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: 'auto' },
