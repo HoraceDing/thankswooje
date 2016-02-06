@@ -1,5 +1,5 @@
 var express = require('express');
-<<<<<<< HEAD
+
 var exphbs  = require('express-handlebars');
 var app = express();
 var bodyParser = require('body-parser');
@@ -47,6 +47,7 @@ app.use(function(req, res, next){
   }
 });
 
+
 // Middleware that checks if a user is logged in. If so, the
 // request continues to be processed, otherwise a 403 is returned.
 function isLoggedIn(req, res, next){
@@ -93,15 +94,38 @@ app.get('/', loadUserTasks, function (req, res) {
 
 // Handle submitted form for new users
 app.post('/user/register', function (req, res) {
-  if(req.body.password !== req.body.password_confirmation){
-      return res.render('index', {errors: "Password and password confirmation do not match"});
+  // checks for valid registration information
+  if (req.body.email === '' || req.body.fl_name === '' || req.body.password === '' || req.body.password_confirmation === '') {
+    return res.render('index', {errors: "Please fill out all fields"});
+  }
+  if (req.body.password !== req.body.password_confirmation){
+    return res.render('index', {errors: "Password and password confirmation do not match"});
+  }
+  if (req.body.fl_name.length > 50) {
+    return res.render('index', {errors: "Your name cannot exceed 50 characters"});
+  }
+  if (req.body.password.length > 50) {
+    return res.render('index', {errors: "Your password cannot exceed 50 characters"});
+  }
+  if (req.body.email.length > 50) {
+    return res.render('index', {errors: "Your email cannot exceed 50 characters"});
+  }
+  if (req.body.fl_name.length < 1) {
+    return res.render('index', {errors: "You must enter a name"});
+  }
+  var regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+  if (!regex.test(req.body.email))
+  {
+    return res.render('index', {errors: "Invalid email address"});
   }
   if (req.body.password.length < 1) {
     err = 'Password too short';
     res.render('index', {errors: err});
     return;
   }
-  if ( req.body.name.length < 1) {
+  
+  
+  if ( req.body.fl_name.length < 1) {
     return res.render('index', {errors: 'name too short'});
   }
 
@@ -120,7 +144,7 @@ app.post('/user/register', function (req, res) {
     if(err){
       if(err.errmsg && err.errmsg.match(/duplicate/)){
         errors = 'Account with this email already exists!';
-      }
+        }
       return res.render('index', {errors: errors});
     }
   });
@@ -210,15 +234,7 @@ app.post('/task/delete/:id', function(req,res) {
     });
 });
 
-app.listen(process.env.PORT || 8080, function () {
-=======
-var app = express();
-
-app.get('/', function (req, res) {
-  res.send('Hello World!asdsds');
-});
 
 app.listen(process.env.PORT, function () {
->>>>>>> master
   console.log('Example app listening on port ' + process.env.PORT);
 });
