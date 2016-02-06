@@ -50,7 +50,7 @@ app.use(function(req, res, next){
 // Middleware that checks if a user is logged in. If so, the
 // request continues to be processed, otherwise a 403 is returned.
 function isLoggedIn(req, res, next){
-  console.log("poop");
+//  console.log("poop");
   if(res.locals.currentUser){
     next();
   }else{
