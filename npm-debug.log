@@ -2,14 +2,14 @@
 1 verbose cli [ '/home/ubuntu/.nvm/versions/node/v4.1.1/bin/node',
 1 verbose cli   '/home/ubuntu/.nvm/versions/node/v4.1.1/bin/npm',
 1 verbose cli   'install',
-1 verbose cli   'express' ]
+1 verbose cli   'heroku' ]
 2 info using npm@2.14.4
 3 info using node@v4.1.1
 4 verbose install initial load of /home/ubuntu/workspace/package.json
 5 verbose stack Error: Failed to parse json
-5 verbose stack Unexpected token 'a' at 31:6
-5 verbose stack     "async": "~0.2.8",
-5 verbose stack      ^
+5 verbose stack Unexpected token '<' at 4:1
+5 verbose stack <<<<<<< HEAD
+5 verbose stack ^
 5 verbose stack     at parseError (/home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:379:11)
 5 verbose stack     at parseJson (/home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:68:23)
 5 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-package-json/read-json.js:48:5
@@ -17,15 +17,15 @@
 5 verbose stack     at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:380:3)
 6 verbose cwd /home/ubuntu/workspace
 7 error Linux 4.2.0-c9
-8 error argv "/home/ubuntu/.nvm/versions/node/v4.1.1/bin/node" "/home/ubuntu/.nvm/versions/node/v4.1.1/bin/npm" "install" "express"
+8 error argv "/home/ubuntu/.nvm/versions/node/v4.1.1/bin/node" "/home/ubuntu/.nvm/versions/node/v4.1.1/bin/npm" "install" "heroku"
 9 error node v4.1.1
 10 error npm  v2.14.4
 11 error file /home/ubuntu/workspace/package.json
 12 error code EJSONPARSE
 13 error Failed to parse json
-13 error Unexpected token 'a' at 31:6
-13 error     "async": "~0.2.8",
-13 error      ^
+13 error Unexpected token '<' at 4:1
+13 error <<<<<<< HEAD
+13 error ^
 14 error File: /home/ubuntu/workspace/package.json
 15 error Failed to parse package.json data.
 15 error package.json must be actual JSON, not just JavaScript.
