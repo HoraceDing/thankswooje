@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 // Configure session middleware that will parse the cookies
 // of an incoming request to see if there is a session for this cookie.
 app.use(session({
-  secret: "poop",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: 'auto' },
@@ -233,7 +233,7 @@ app.post('/task/delete/:id', function(req,res) {
 });
 
 
-app.listen(process.env.PORT || 8080, function () {
+app.listen(process.env.PORT , function () {
   console.log('Example app listening on port ' + process.env.PORT);
   
 });
