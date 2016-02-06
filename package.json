@@ -1,55 +1,29 @@
 {
   "name": "cpsc113-social-todo-node",
   "version": "1.0.0",
-<<<<<<< HEAD
-  "description": "First coding assignment for cpsc113",
-=======
   "description": "my assignment for class",
->>>>>>> add-view-layer
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-<<<<<<< HEAD
-    "url": "git+https://github.com/jjf32897/cpsc113-social-todo-node.git"
-=======
     "url": "git+https://github.com/kljensen/cpsc113-social-todo-node.git"
->>>>>>> add-view-layer
   },
   "author": "",
   "license": "Unlicense",
   "bugs": {
-<<<<<<< HEAD
-    "url": "https://github.com/jjf32897/cpsc113-social-todo-node/issues"
-  },
-  "homepage": "https://github.com/jjf32897/cpsc113-social-todo-node#readme",
-=======
     "url": "https://github.com/kljensen/cpsc113-social-todo-node/issues"
   },
   "homepage": "https://github.com/kljensen/cpsc113-social-todo-node#readme",
->>>>>>> add-view-layer
   "dependencies": {
     "bcrypt": "^0.8.5",
     "body-parser": "^1.14.2",
     "connect-mongodb-session": "^1.1.0",
     "express": "^4.13.4",
     "express-handlebars": "^2.0.1",
-<<<<<<< HEAD
-=======
     "express-session": "^1.13.0",
     "mongoose": "^4.3.7"
-  },
-  "devDependencies": {
-    "nodemon": "^1.8.1"
-    "async": "~0.2.8",
-    "connect-mongodb-session": "^1.1.1",
-    "express": "^3.2.6",
->>>>>>> add-view-layer
-    "express-session": "^1.13.0",
-    "mongoose": "^4.3.7",
-    "nodemailer": "^0.7.1"
   },
   "devDependencies": {
     "nodemon": "^1.8.1"
