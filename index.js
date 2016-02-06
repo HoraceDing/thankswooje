@@ -1,5 +1,4 @@
 var express = require('express');
-
 var exphbs  = require('express-handlebars');
 var app = express();
 var bodyParser = require('body-parser');
@@ -25,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 // Configure session middleware that will parse the cookies
 // of an incoming request to see if there is a session for this cookie.
 app.use(session({
-  secret: "poop",
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: { secure: 'auto' },
@@ -51,7 +50,7 @@ app.use(function(req, res, next){
 // Middleware that checks if a user is logged in. If so, the
 // request continues to be processed, otherwise a 403 is returned.
 function isLoggedIn(req, res, next){
-  console.log("poop");
+//  console.log("poop");
   if(res.locals.currentUser){
     next();
   }else{
@@ -201,7 +200,6 @@ app.post('/task/create', function(req, res){
 });
 
 app.post('/task/complete/:id', function(req,res) {
-   // console.log("jojo");
     Tasks.findById(req.params.id, function(err,task){
         if (err) {
             res.send("Error finding task");
@@ -235,6 +233,7 @@ app.post('/task/delete/:id', function(req,res) {
 });
 
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT , function () {
   console.log('Example app listening on port ' + process.env.PORT);
+  
 });
